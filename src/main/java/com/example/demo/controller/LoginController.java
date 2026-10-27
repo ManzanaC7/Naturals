@@ -9,19 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.Optional;
+import java.util.List;
 
 @Controller
-public class AuthController {
+public class LoginController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
 
     @GetMapping("/login")
     public String mostrarLogin(Model model) {
@@ -31,14 +25,17 @@ public class AuthController {
 
     @PostMapping("/login")
     public String procesarLogin(@ModelAttribute Usuario usuario, HttpSession session, Model model) {
-        Optional<Usuario> usuarioEncontrado = usuarioRepository.findByCorreo(usuario.getCorreo());
-
-        if (usuarioEncontrado.isPresent() && usuarioEncontrado.get().getPassword().equals(usuario.getPassword())) {
-            session.setAttribute("usuarioLogueado", usuarioEncontrado.get());
+        List<Usuario> encontrados = usuarioRepository.findByNombreUsuarioAndContrasena(
+            usuario.getNombreUsuario(), 
+            usuario.getContrasena()
+        );
+        
+        if (!encontrados.isEmpty()) {
+            session.setAttribute("usuarioLogueado", encontrados.get(0));
             return "redirect:/inventario";
         }
-
-        model.addAttribute("error", "Correo o contraseña incorrectos");
+        
+        model.addAttribute("error", "Usuario o contraseña incorrectos");
         return "login";
     }
 
@@ -55,7 +52,7 @@ public class AuthController {
     }
 
     @GetMapping("/logout")
-    public String logout(HttpSession session) {
+    public String cerrarSesion(HttpSession session) {
         session.invalidate();
         return "redirect:/login";
     }

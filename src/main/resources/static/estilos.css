@@ -1,0 +1,120 @@
+/* Paleta y diseño global unificado - Naturals */
+:root {
+    --bg-main: #0b0f19;         /* Fondo azul oscuro general */
+    --card-bg: #111827;         /* Fondo de las tarjetas y contenedores */
+    --card-border: #1f2937;     /* Bordes sutiles */
+    --input-bg: #111827;        /* Fondo de los inputs */
+    --input-text: #ffffff;      /* Color de texto en inputs */
+    --accent-green: #10b981;    /* Verde brillante corporativo */
+    --accent-green-hover: #059669; 
+    --text-light: #f3f4f6;      
+    --text-muted: #9ca3af;      
+}
+
+html, body {
+    background-color: var(--bg-main) !important;
+    color: var(--text-light) !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor flexible para centrar pantallas de autenticación */
+.centrar-pantalla, .vh-100 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tarjetas y recuadros principales */
+.card, .main-card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8) !important;
+    color: var(--text-light) !important;
+}
+
+.card-header {
+    background-color: rgba(31, 41, 55, 0.8) !important;
+    border-bottom: 1px solid var(--card-border) !important;
+    color: var(--text-light) !important;
+    font-weight: 600;
+}
+
+/* Campos de formulario e inputs */
+.form-control, .form-select {
+    background-color: var(--input-bg) !important;
+    border: 1px solid #374151 !important;
+    color: var(--input-text) !important;
+    border-radius: 8px !important;
+    padding: 0.65rem 1rem;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--input-bg) !important;
+    color: var(--input-text) !important;
+    border-color: var(--accent-green) !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25) !important;
+}
+
+.form-label, label {
+    color: var(--text-muted) !important;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Botones principales verdes */
+.btn-success, .btn-primary, .btn-neon {
+    background-color: var(--accent-green) !important;
+    border-color: var(--accent-green) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    border-radius: 8px !important;
+    padding: 0.65rem 1rem;
+}
+
+.btn-success:hover, .btn-primary:hover, .btn-neon:hover {
+    background-color: var(--accent-green-hover) !important;
+    border-color: var(--accent-green-hover) !important;
+}
+
+/* Barra de navegación */
+.navbar {
+    background-color: var(--card-bg) !important;
+    border-bottom: 1px solid var(--card-border) !important;
+}
+
+/* Tablas integradas en el tema oscuro (sin fondos blancos) */
+.table {
+    background-color: var(--card-bg) !important;
+    color: var(--text-light) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+    border-color: #1f2937 !important;
+}
+
+.table th {
+    background-color: #1a2234 !important;
+    color: #f3f4f6 !important;
+    border-bottom: 1px solid #2d3748 !important;
+    font-weight: 600;
+}
+
+.table td {
+    background-color: var(--card-bg) !important;
+    color: #e5e7eb !important;
+    border-bottom: 1px solid #1f2937 !important;
+    vertical-align: middle;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+    color: #e5e7eb !important;
+}
+
+.table-hover tbody tr:hover td {
+    background-color: rgba(16, 185, 129, 0.06) !important;
+    color: #ffffff !important;
+}

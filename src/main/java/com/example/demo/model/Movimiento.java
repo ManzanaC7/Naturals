@@ -16,54 +16,27 @@ public class Movimiento {
     private Double monto;
     private LocalDateTime fecha;
 
-    public Movimiento() {
-        this.fecha = LocalDateTime.now();
-    }
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
-    public Movimiento(String tipo, String descripcion, Double monto) {
-        this.tipo = tipo;
-        this.descripcion = descripcion;
-        this.monto = monto;
-        this.fecha = LocalDateTime.now();
-    }
+    public Movimiento() {}
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getTipo() { return tipo; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
 
-    public String getTipo() {
-        return tipo;
-    }
+    public String getDescripcion() { return descripcion; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+    public Double getMonto() { return monto; }
+    public void setMonto(Double monto) { this.monto = monto; }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+    public LocalDateTime getFecha() { return fecha; }
+    public void setFecha(LocalDateTime fecha) { this.fecha = fecha; }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Double getMonto() {
-        return monto;
-    }
-
-    public void setMonto(Double monto) {
-        this.monto = monto;
-    }
-
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
-    }
+    public Usuario getUsuario() { return usuario; }
+    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
 }
